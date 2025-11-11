@@ -1,26 +1,30 @@
 
-
+// - import/export 
 import { propertyForSaleArr } from './properties/propertyForSaleArr.js'
 import { placeholderPropertyObj } from '/placeholderPropertyObj.js'
 
-function getPropertyHtml() {
-    
+
+// .map() ✔️ - .join() ✔️ - Reduce() ✔️  - Object destructuring - Default parameters
+function getPropertyHtml() { 
     const renderHTML = propertyForSaleArr.map(function(sale){
-        
         return `<section class="card">
-    <img src="/images/">
+    <img src="/images/${sale.image}">
     <div class="card-right">
-        <h2>${sale.propertyLocation
-        }</h2>
-        <h3>${sale.priceGBP
-        }</h3>
+        <h2>${sale.propertyLocation}</h2>
+        <h3>$${sale.priceGBP}</h3>
         <p>${sale.comment}</p>
-        <h3>TOTAL SIZE IN SQUARE METRES m&sup2;</h3>
+     <h3>${
+    sale.roomsM2.reduce((total, num) => total + num, 0)
+} m&sup2;</h3>
+
     </div>
-</section> `
-        
+</section>`    
     })
+
     return renderHTML
+
+
+    
 /*
 SUPER CHALLENGE 💪
 
@@ -29,7 +33,7 @@ Render out a card for each of the properties in the propertyForSaleArr array (in
 If no array of properties is passed to getPropertyHtml, the placeholder property stored in placeholderPropertyObj (in the 'properties' folder) should be rendered instead.
 
 This is the JS I want you to use to complete this challenge 👇
-- import/export
+- import/export 
 - .map()
 - .join()
 - Object destructuring
@@ -52,4 +56,5 @@ This is the HTML template 👇. Replace everything in UPPERCASE with property da
 }
 
 /***** Modify 👇 by adding an argument to the function call ONLY. *****/
-document.getElementById('container').innerHTML = getPropertyHtml().join('')
+document.getElementById('container').innerHTML = getPropertyHtml().join('') 
+// Join to remove ",-
