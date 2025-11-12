@@ -17,7 +17,7 @@ function getPropertyHtml(properties = [placeholderPropertyObj]) {
 <h2>${propertyLocation}</h2>
 <h3>$${priceGBP}</h3>
 <p>${comment}</p>
-
+  
 <h3>${roomsM2.reduce((total, num) => total + num, 0)} m&sup2;</h3>
 
 
